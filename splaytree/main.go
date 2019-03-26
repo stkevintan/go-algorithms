@@ -263,12 +263,15 @@ func (tree *SplayTree) Delete(val int) bool {
 			maxNode.Child[LeftIndex] = curNode.Child[LeftIndex]
 			maxNode.Child[LeftIndex].Parent = maxNode
 		}
+		baseNode := maxNode.Parent
 		tree.Replace(curNode, maxNode)
 		maxNode.Child[RightIndex] = curNode.Child[RightIndex]
 		maxNode.Child[RightIndex].Parent = maxNode
+		tree.Splay(baseNode, nil)
 	}
-	//FIXME: What about push up ?
-	// maxNode.PushUp()
-
 	return true
+}
+
+func main() {
+
 }
